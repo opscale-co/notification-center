@@ -14,67 +14,23 @@ At Opscale, we’re passionate about contributing to the open-source community b
 
 Thanks for helping Opscale continue to scale! 🚀
 
-<!--delete-->
 
-## Using this skeleton (remove this section after you have completed these steps)
-
-This repo can be used to scaffold a Laravel package. Follow these steps to get started:
-
-1. Press the "Use this template" button at the top of this repo to create a new repo with the contents of this skeleton.
-
-2. Run "php ./configure.php" to run a script that will replace all placeholders throughout all the files.
-
-3. Check the GitHub Actions workflows you want to keep.
-
-4. If you want to publish your package in Packagist, you can use the publish.sh script.
-
-5. Keep in mind the template is configured with [Duster](https://github.com/tighten/duster) and [Commitlint](https://commitlint.js.org/) 
-
-6. Have fun creating your package.
-
----
-
-To use your customized package in a Nova app, add this line in the `require` section of the `composer.json` file:
-
-```
-
-":vendor/:package_name": "*",
-
-```
-
-In the same `composer.json` file add a `repositiories` section with the path to your package repo:
-
-```
-
-"repositories": [
-{
-    "type": "path",
-    "url": "../:package_name"
-},
-
-```
-
-Now you're ready to develop your package inside a Nova app.
-
-**When you are done with the steps above delete everything above!**
-
-<!--/delete-->
 
 ## Description
 
-:package_description
+Make sure your users get notified. Notification Center for Laravel Nova gives you multi-channel delivery strategies with automatic channel escalation, smart retries, and advanced open/action tracking — so no message goes unnoticed.
 
-Add a screenshot of the tool here.
+![Demo](https://raw.githubusercontent.com/opscale-co/notification-center/refs/heads/main/screenshots/notification-center.gif)
 
 ## Installation
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor/:package_name.svg?style=flat-square)](https://packagist.org/packages/:vendor/:package_name)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/opscale-co/notification-center.svg?style=flat-square)](https://packagist.org/packages/opscale-co/notification-center)
 
 You can install the package in to a Laravel app that uses [Nova](https://nova.laravel.com) via composer:
 
 ```bash
 
-composer require :vendor/:package_name
+composer require opscale-co/notification-center
 
 ```
 
@@ -88,7 +44,7 @@ public function tools()
 {
     return [
         // ...
-        new \:namespace_vendor\:namespace_tool_name\Tool(),
+        new \Opscale\NotificationCenter\Tool(),
     ];
 }
 
@@ -96,7 +52,43 @@ public function tools()
 
 ## Usage
 
-Click on the ":package_name" menu item in your Nova app to see the tool provided by this package.
+Publish the configuration and run the migrations:
+
+```bash
+php artisan notification-center:install
+```
+
+## Configuration
+
+The configuration file `config/notification-center.php` is organized around four features:
+
+### Templates
+
+Notifications use templates from [Nova Dynamic Resources](https://github.com/opscale-co/nova-dynamic-resources) to define their fields. Refer to the composition example for setting up templates.
+
+### Orchestration
+
+Define delivery strategies per notification type (marketing, transactional, system, alert, reminder). Each strategy configures an ordered list of channels to attempt (e.g., `['webpush', 'whatsapp', 'sms']`) with automatic channel escalation — if a channel times out, the next one in the list is attempted. Map channel identifiers to notification classes in the `messages` config to control how each channel renders its content.
+
+### Deliverability
+
+Fine-tune when and how notifications reach your users. Configure time windows (allowed days and hours), retry intervals with escalating delays, max attempts per channel, and channel timeout thresholds. The scheduler re-dispatches strategies hourly for all published, non-expired notifications. Web push requires HTTPS since service workers only work in secure contexts. For WhatsApp, set your Twilio Content Template SID via the `TWILIO_WHATSAPP_CONTENT_SID` environment variable.
+
+### Segmentation
+
+Target the right users with audiences. Create **static** audiences with manually curated profiles, **dynamic** audiences that resolve membership at query time based on criteria rules, or **segments** as named reusable cohorts based on shared profile attributes. Attach one or more audiences to a notification when publishing.
+
+### In-App Notifications
+
+Three built-in channels deliver notifications directly inside your application:
+
+- **Nova**: Sends notifications through Laravel Nova's native notification bell. Users receive real-time alerts within the Nova admin panel.
+- **Card**: Renders notifications as visual cards on the **Notifications Dashboard**, a dedicated Nova dashboard where users can browse and manage their card notifications.
+- **Web Push**: Delivers browser push notifications via service workers. Requires HTTPS — service workers are only available in secure contexts. Make sure your application is served over HTTPS in all environments where web push is enabled.
+
+### Tracking
+
+Every delivery generates unique open and action slugs for built-in tracking. Tracking routes are registered automatically. Enable Google Analytics integration by setting your GA4 Measurement ID via the `GOOGLE_ANALYTICS_ID` environment variable.
 
 ## Testing
 
@@ -116,11 +108,11 @@ Please see [CONTRIBUTING](https://github.com/opscale-co/.github/blob/main/CONTRI
 
 ## Security
 
-If you discover any security related issues, please email :author_email instead of using the issue tracker.
+If you discover any security related issues, please email development@opscale.co instead of using the issue tracker.
 
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
+- [Opscale](https://github.com/opscale-co)
 
 ## License
 

@@ -1,6 +1,6 @@
 import eslint from "@eslint/js";
-import vueEssential from 'eslint-plugin-vue';
 import prettierConfig from 'eslint-config-prettier';
+import vueEssential from 'eslint-plugin-vue';
 import globals from "globals";
 
 export default [

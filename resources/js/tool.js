@@ -1,5 +1,7 @@
 import Tool from './pages/Tool'
+import NotificationCard from './components/NotificationCard'
 
-Nova.booting((app, store) => {
-  Nova.inertia(':namespace_tool_name', Tool)
+Nova.booting((app/*, store*/) => {
+  Nova.inertia('NotificationCenter', Tool)
+  app.component('NotificationCard', NotificationCard)
 })

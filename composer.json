@@ -1,6 +1,6 @@
 {
-    "name": ":vendor/:package_name",
-    "description": ":package_description",
+    "name": "opscale-co/notification-center",
+    "description": "Notification Center",
     "keywords": [
         "laravel",
         "nova",
@@ -14,40 +14,51 @@
             "url": "https://nova.laravel.com"
         }
     ],
-    "homepage": "https://github.com/:vendor/:package_name",
+    "homepage": "https://github.com/opscale-co/notification-center",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
+            "name": "Opscale",
+            "email": "development@opscale.co",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": ">=8.2",
-        "ext-readline": "*"
+        "php": "^8.2",
+        "jenssegers/agent": "^2.6",
+        "laravel-notification-channels/microsoft-teams": "^2.1",
+        "laravel-notification-channels/twilio": "^4.1",
+        "laravel-notification-channels/webpush": "^10.4",
+        "laravel/slack-notification-channel": "^3.7",
+        "opscale-co/actions": "^1.0",
+        "opscale-co/nova-dynamic-resources": "^1.1",
+        "opscale-co/nova-package-tools": "^1.0",
+        "theriddleofenigma/laravel-model-validation": "^1.6"
     },
     "autoload": {
         "psr-4": {
-            ":namespace_vendor\\:namespace_tool_name\\": "src/"
+            "Opscale\\NotificationCenter\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            ":namespace_vendor\\:namespace_tool_name\\Tests\\": "tests"
+            "Opscale\\NotificationCenter\\Tests\\": "tests",
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                ":namespace_vendor\\:namespace_tool_name\\ToolServiceProvider"
+                "Opscale\\NotificationCenter\\ToolServiceProvider"
             ]
         }
     },
     "config": {
         "sort-packages": true
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "require-dev": {
         "laravel/nova": "^5.4",
@@ -55,9 +66,17 @@
         "phpunit/phpunit": "^10.5",
         "tightenco/duster": "^2.7"
     },
-    "script" : {
+    "scripts": {
         "post-autoload-dump": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php vendor/bin/testbench serve --ansi"
         ]
     }
 }

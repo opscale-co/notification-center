@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use \:namespace_vendor\:namespace_tool_name\Http\Controllers\ToolController;
+use Opscale\NotificationCenter\Http\Controllers\ToolController;
 
 /*
 |--------------------------------------------------------------------------

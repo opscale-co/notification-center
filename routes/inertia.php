@@ -15,5 +15,5 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 */
 
 Route::get('/', function (NovaRequest $request) {
-    return inertia(':namespace_tool_name');
+    return inertia('NotificationCenter');
 });

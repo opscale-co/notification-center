@@ -1,0 +1,31 @@
+laravel: '@testbench'
+
+providers:
+  - Laravel\Nova\NovaCoreServiceProvider
+  - Laravel\Nova\NovaServiceProvider
+  - Workbench\App\Providers\WorkbenchServiceProvider
+  - Workbench\App\Providers\NovaServiceProvider
+  - Opscale\NotificationCenter\ToolServiceProvider
+
+seeders:
+  - Workbench\Database\Seeders\DatabaseSeeder
+
+workbench:
+  start: /nova
+  build:
+    - package:discover
+    - asset-publish
+    - create-sqlite-db
+    - vendor:publish --provider="NotificationChannels\WebPush\WebPushServiceProvider" --tag="migrations"
+    - db:wipe
+    - migrate:refresh
+    - webpush:vapid
+    - notification-center:install --no-interaction
+  assets:
+    - nova-assets
+  sync: []
+
+purge:
+  directories:
+    - lang/*
+    - public/vendor/*
