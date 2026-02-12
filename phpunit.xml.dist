@@ -17,7 +17,7 @@
          displayDetailsOnPhpunitDeprecations="true">
     
     <testsuites>
-        <testsuite name="Nova Dynamic Resources Test Suite">
+        <testsuite name="Notification Center Resources Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
