@@ -2,6 +2,11 @@
 
 All notable changes to opscale-co/nova-api will be documented in this file.
 
+## <small>1.0.1 (2026-02-16)</small>
+
+* Merge branch 'main' of https://github.com/opscale-co/notification-center ([5900764](https://github.com/opscale-co/notification-center/commit/5900764))
+* fix(audience): added repository for pulling profiles ([00b5319](https://github.com/opscale-co/notification-center/commit/00b5319))
+
 ## 1.0.0 (2026-02-12)
 
 * style(phpunit): foxed typo ([e898bc2](https://github.com/opscale-co/notification-center/commit/e898bc2))
