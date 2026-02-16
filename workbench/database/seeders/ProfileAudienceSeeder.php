@@ -39,5 +39,12 @@ class ProfileAudienceSeeder extends Seeder
         ]);
 
         $audience->profiles()->attach($profile);
+
+        Audience::create([
+            'name' => 'Active Users',
+            'description' => 'Dynamic audience based on recent activity',
+            'type' => AudienceType::DYNAMIC->value,
+            'criteria' => 'SELECT id FROM notification_center_profiles WHERE deleted_at IS NULL',
+        ]);
     }
 }

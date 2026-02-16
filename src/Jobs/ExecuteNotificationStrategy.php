@@ -53,9 +53,9 @@ class ExecuteNotificationStrategy implements ShouldQueue
         }
 
         foreach ($this->notification->audiences as $audience) {
-            $profiles = $audience->profiles()->with(['deliveries' => function ($query) {
+            $profiles = $audience->getProfiles()->load(['deliveries' => function ($query) {
                 $query->where('notification_id', $this->notification->id)->orderBy('created_at');
-            }])->get();
+            }]);
 
             foreach ($profiles as $profile) {
                 $this->processProfile($profile);
