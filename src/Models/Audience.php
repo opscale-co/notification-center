@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Opscale\NotificationCenter\Models\Enums\AudienceType;
+use Opscale\NotificationCenter\Models\Repositories\AudienceRepository;
 
 class Audience extends Model
 {
-    use HasUlids, SoftDeletes, ValidatorTrait;
+    use AudienceRepository, HasUlids, SoftDeletes, ValidatorTrait;
 
     protected $table = 'notification_center_audiences';
 

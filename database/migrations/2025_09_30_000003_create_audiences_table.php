@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->enum('type', ['Static', 'Dynamic', 'Segment']);
-            $table->json('criteria')->nullable();
+            $table->text('criteria')->nullable();
             $table->unsignedInteger('total_members')->default(0);
             $table->timestamps();
             $table->softDeletes();

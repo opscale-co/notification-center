@@ -33,6 +33,7 @@
         "opscale-co/actions": "^1.0",
         "opscale-co/nova-dynamic-resources": "^1.1",
         "opscale-co/nova-package-tools": "^1.0",
+        "spatie/laravel-tags": "^4.10",
         "theriddleofenigma/laravel-model-validation": "^1.6"
     },
     "autoload": {

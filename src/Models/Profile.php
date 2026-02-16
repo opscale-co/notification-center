@@ -11,10 +11,11 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use NotificationChannels\WebPush\HasPushSubscriptions;
+use Spatie\Tags\HasTags;
 
 class Profile extends Model
 {
-    use HasPushSubscriptions, HasUlids, Notifiable, SoftDeletes, ValidatorTrait;
+    use HasPushSubscriptions, HasTags, HasUlids, Notifiable, SoftDeletes, ValidatorTrait;
 
     protected $table = 'notification_center_profiles';
 
