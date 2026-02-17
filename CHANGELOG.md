@@ -2,6 +2,11 @@
 
 All notable changes to opscale-co/nova-api will be documented in this file.
 
+## 1.1.0 (2026-02-17)
+
+* Merge branch 'main' of https://github.com/opscale-co/notification-center ([ab8a818](https://github.com/opscale-co/notification-center/commit/ab8a818))
+* feat(notification): type can be defined in template ([30f18b6](https://github.com/opscale-co/notification-center/commit/30f18b6))
+
 ## <small>1.0.2 (2026-02-16)</small>
 
 * Merge branch 'main' of https://github.com/opscale-co/notification-center ([448ed4b](https://github.com/opscale-co/notification-center/commit/448ed4b))
