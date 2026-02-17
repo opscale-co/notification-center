@@ -9,6 +9,14 @@ use Opscale\NovaDynamicResources\Nova\Template as BaseTemplate;
 class Template extends BaseTemplate
 {
     /**
+     * Get the URI key for the resource.
+     */
+    public static function uriKey(): string
+    {
+        return 'notification-templates';
+    }
+
+    /**
      * Build an "index" query for the given resource.
      *
      * @param  Builder<\Opscale\NovaDynamicResources\Models\Template>  $query
