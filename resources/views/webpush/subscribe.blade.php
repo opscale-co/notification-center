@@ -23,14 +23,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
+            await navigator.serviceWorker.register('{{ $swUrl }}');
+            const registration = await navigator.serviceWorker.ready;
+
             const permission = await Notification.requestPermission();
             if (permission !== 'granted') {
                 statusEl.textContent = '{{ __("Notification permission was denied.") }}';
                 return;
             }
-
-            await navigator.serviceWorker.register('{{ $swUrl }}');
-            const registration = await navigator.serviceWorker.ready;
 
             navigator.serviceWorker.addEventListener('message', function (event) {
                 if (event.data.success) {
