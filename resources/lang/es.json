@@ -81,5 +81,13 @@
     "Subscribe to Push Notifications": "Suscribirse a Notificaciones Push",
     "Subscription registered successfully.": "Suscripción registrada con éxito.",
     "Hello": "Hola",
-    "View": "Ver"
+    "View": "Ver",
+    "Push Notifications": "Notificaciones Push",
+    "Enable push notifications to stay updated with the latest alerts and messages.": "Habilita las notificaciones push para mantenerte actualizado con las últimas alertas y mensajes.",
+    "Thanks,": "Gracias,",
+    "Push notifications are not supported in this browser.": "Las notificaciones push no son compatibles con este navegador.",
+    "Notification permission was denied.": "El permiso de notificación fue denegado.",
+    "Successfully subscribed to push notifications!": "¡Suscrito exitosamente a las notificaciones push!",
+    "Failed to register subscription. Please try again.": "Error al registrar la suscripción. Por favor, inténtalo de nuevo.",
+    "An error occurred:": "Ocurrió un error:"
 }

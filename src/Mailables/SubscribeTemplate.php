@@ -12,7 +12,7 @@ class SubscribeTemplate extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public function __construct(public string $registerUrl, public string $vapidPublicKey) {}
+    public function __construct(public string $registerUrl, public string $swUrl, public string $vapidPublicKey) {}
 
     /**
      * Get the message envelope.

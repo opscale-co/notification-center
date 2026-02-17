@@ -81,5 +81,13 @@
     "Subscribe to Push Notifications": "Subscribe to Push Notifications",
     "Subscription registered successfully.": "Subscription registered successfully.",
     "Hello": "Hello",
-    "View": "View"
+    "View": "View",
+    "Push Notifications": "Push Notifications",
+    "Enable push notifications to stay updated with the latest alerts and messages.": "Enable push notifications to stay updated with the latest alerts and messages.",
+    "Thanks,": "Thanks,",
+    "Push notifications are not supported in this browser.": "Push notifications are not supported in this browser.",
+    "Notification permission was denied.": "Notification permission was denied.",
+    "Successfully subscribed to push notifications!": "Successfully subscribed to push notifications!",
+    "Failed to register subscription. Please try again.": "Failed to register subscription. Please try again.",
+    "An error occurred:": "An error occurred:"
 }

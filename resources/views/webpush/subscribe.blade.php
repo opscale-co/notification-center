@@ -30,7 +30,7 @@ async function subscribeToPush() {
             return;
         }
 
-        await navigator.serviceWorker.register('{{ route("notification-center.webpush.sw") }}');
+        await navigator.serviceWorker.register('{{ $swUrl }}');
         const registration = await navigator.serviceWorker.ready;
 
         navigator.serviceWorker.addEventListener('message', function (event) {
