@@ -2,6 +2,11 @@
 
 All notable changes to opscale-co/nova-api will be documented in this file.
 
+## <small>1.1.1 (2026-02-17)</small>
+
+* Merge branch 'main' of https://github.com/opscale-co/notification-center ([bdd55c0](https://github.com/opscale-co/notification-center/commit/bdd55c0))
+* fix(webpush): fixed https issue when subscribing ([a8c04d1](https://github.com/opscale-co/notification-center/commit/a8c04d1))
+
 ## 1.1.0 (2026-02-17)
 
 * Merge branch 'main' of https://github.com/opscale-co/notification-center ([ab8a818](https://github.com/opscale-co/notification-center/commit/ab8a818))
