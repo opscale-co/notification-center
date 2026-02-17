@@ -27,7 +27,7 @@ class WebPushNotification extends Notification
             ->body($model->summary)
             ->icon(asset('favicon.png'));
 
-        $message->action(route('notification-center.track.open', $this->delivery->open_slug));
+        $message->action(__('More Details'), route('notification-center.track.open', $this->delivery->open_slug));
 
         return $message;
     }

@@ -89,5 +89,6 @@
     "Notification permission was denied.": "Notification permission was denied.",
     "Successfully subscribed to push notifications!": "Successfully subscribed to push notifications!",
     "Failed to register subscription. Please try again.": "Failed to register subscription. Please try again.",
-    "An error occurred:": "An error occurred:"
+    "An error occurred:": "An error occurred:",
+    "More Details": "More Details"
 }

@@ -89,5 +89,6 @@
     "Notification permission was denied.": "El permiso de notificación fue denegado.",
     "Successfully subscribed to push notifications!": "¡Suscrito exitosamente a las notificaciones push!",
     "Failed to register subscription. Please try again.": "Error al registrar la suscripción. Por favor, inténtalo de nuevo.",
-    "An error occurred:": "Ocurrió un error:"
+    "An error occurred:": "Ocurrió un error:",
+    "More Details": "Más Detalles"
 }

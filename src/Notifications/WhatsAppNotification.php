@@ -22,9 +22,8 @@ class WhatsAppNotification extends Notification
     {
         $model = $this->delivery->notification;
         $data = [
-            1 => $model->subject,
-            2 => $model->summary,
-            3 => route('notification-center.track.open', $this->delivery->open_slug),
+            1 => $model->summary,
+            2 => $this->delivery->open_slug,
         ];
 
         return (new TwilioContentTemplateMessage)
