@@ -2,6 +2,11 @@
 
 All notable changes to opscale-co/nova-api will be documented in this file.
 
+## <small>1.0.2 (2026-02-16)</small>
+
+* Merge branch 'main' of https://github.com/opscale-co/notification-center ([448ed4b](https://github.com/opscale-co/notification-center/commit/448ed4b))
+* fix(executenotificationstrategy): update profiles pulling in notification deliveries ([f6b9b29](https://github.com/opscale-co/notification-center/commit/f6b9b29))
+
 ## <small>1.0.1 (2026-02-16)</small>
 
 * Merge branch 'main' of https://github.com/opscale-co/notification-center ([5900764](https://github.com/opscale-co/notification-center/commit/5900764))
