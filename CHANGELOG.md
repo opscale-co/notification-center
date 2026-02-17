@@ -2,6 +2,10 @@
 
 All notable changes to opscale-co/nova-api will be documented in this file.
 
+## <small>1.1.3 (2026-02-17)</small>
+
+* fix(notifications): fixed webpush action and whatsapp arguments ([3ac3d03](https://github.com/opscale-co/notification-center/commit/3ac3d03))
+
 ## <small>1.1.2 (2026-02-17)</small>
 
 * Merge branch 'main' of https://github.com/opscale-co/notification-center ([d72dfb2](https://github.com/opscale-co/notification-center/commit/d72dfb2))
