@@ -2,6 +2,11 @@
 
 All notable changes to opscale-co/nova-api will be documented in this file.
 
+## <small>1.1.2 (2026-02-17)</small>
+
+* Merge branch 'main' of https://github.com/opscale-co/notification-center ([d72dfb2](https://github.com/opscale-co/notification-center/commit/d72dfb2))
+* fix(webpush): fixed script loading time ([4d0d134](https://github.com/opscale-co/notification-center/commit/4d0d134))
+
 ## <small>1.1.1 (2026-02-17)</small>
 
 * Merge branch 'main' of https://github.com/opscale-co/notification-center ([bdd55c0](https://github.com/opscale-co/notification-center/commit/bdd55c0))
