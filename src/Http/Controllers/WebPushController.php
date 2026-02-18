@@ -6,7 +6,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\URL;
 use Opscale\NotificationCenter\Mailables\SubscribeTemplate;
 use Opscale\NotificationCenter\Models\Profile;
 
@@ -30,12 +29,6 @@ class WebPushController extends Controller
     public function subscribe(Request $request, string $profileId): Response
     {
         Profile::findOrFail($profileId);
-
-        $forceScheme = $request->isSecure() || $request->header('X-Forwarded-Proto') === 'https';
-
-        if ($forceScheme) {
-            URL::forceScheme('https');
-        }
 
         $mailable = new SubscribeTemplate(
             registerUrl: route('notification-center.webpush.register', $profileId),

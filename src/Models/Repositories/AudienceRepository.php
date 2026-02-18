@@ -22,13 +22,26 @@ trait AudienceRepository
     {
         $profileIds = DB::select($this->criteria);
 
-        return Profile::whereIn('id', collect($profileIds)->pluck('id'))->get();
+        $profiles = Profile::whereIn('id', collect($profileIds)->pluck('id'))->get();
+
+        $this->updateTotalMembers($profiles);
+
+        return $profiles;
     }
 
     protected function getSegmentProfiles(): Collection
     {
         $tags = array_map('trim', explode(',', $this->criteria));
 
-        return Profile::withAnyTags($tags)->get();
+        $profiles = Profile::withAnyTags($tags)->get();
+
+        $this->updateTotalMembers($profiles);
+
+        return $profiles;
+    }
+
+    protected function updateTotalMembers(Collection $profiles): void
+    {
+        $this->updateQuietly(['total_members' => $profiles->count()]);
     }
 }

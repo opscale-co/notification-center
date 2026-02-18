@@ -2,10 +2,10 @@
 
 namespace Opscale\NotificationCenter\Nova;
 
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Badge;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
@@ -56,6 +56,24 @@ class Notification extends Resource
     ];
 
     /**
+     * Determine if the current user can update the given resource.
+     */
+    public function authorizedToUpdate(Request $request): bool
+    {
+        return $this->resource->status !== NotificationStatus::PUBLISHED
+            && parent::authorizedToUpdate($request);
+    }
+
+    /**
+     * Determine if the current user can delete the given resource.
+     */
+    public function authorizedToDelete(Request $request): bool
+    {
+        return $this->resource->status !== NotificationStatus::PUBLISHED
+            && parent::authorizedToDelete($request);
+    }
+
+    /**
      * Get the fields displayed by the resource.
      *
      * @return array<mixed>
@@ -65,42 +83,64 @@ class Notification extends Resource
         return [
             Tab::group(__('Notification'), [
                 Tab::make(__('Details'), [
-                    Text::make(__('Subject'), 'subject')
-                        ->rules('required', 'string', 'max:50'),
-
-                    Trix::make(__('Body'), 'body')
-                        ->rules('required', 'string')
-                        ->alwaysShow(),
-
-                    Textarea::make(__('Summary'), 'summary')
-                        ->rules('required', 'string', 'max:100')
-                        ->alwaysShow(),
+                    ...$this->fieldsForCreate(),
 
                     Badge::make(__('Status'), 'status')
                         ->map([
                             NotificationStatus::DRAFT->value => 'warning',
                             NotificationStatus::PUBLISHED->value => 'success',
                         ]),
-
-                    Panel::make(__('Advanced Settings'), [
-                        DateTime::make(__('Expiration'), 'expiration')
-                            ->displayUsing(fn ($value) => $value?->diffForHumans())
-                            ->rules('nullable', 'date'),
-
-                        Text::make(__('Action'), 'action')
-                            ->rules('nullable', 'url', 'max:255')
-                            ->hideFromIndex(),
-
-                        $this->typeField(),
-                    ])->collapsible()->collapsedByDefault(),
-
-                    ...$this->renderTemplateFields(),
                 ]),
 
                 Tab::make(__('Deliveries'), [
                     HasMany::make(__('Deliveries'), 'deliveries', Delivery::class),
                 ]),
             ]),
+        ];
+    }
+
+    /**
+     * Get the fields used for creating and updating the resource.
+     *
+     * @return array<mixed>
+     */
+    public function fieldsForCreate(): array
+    {
+        return [
+            Text::make(__('Subject'), 'subject')
+                ->rules('required', 'string', 'max:50'),
+
+            Trix::make(__('Body'), 'body')
+                ->rules('required', 'string')
+                ->alwaysShow(),
+
+            Textarea::make(__('Summary'), 'summary')
+                ->rules('required', 'string', 'max:100')
+                ->alwaysShow(),
+
+            ...$this->renderTemplateFields(),
+
+            Panel::make(__('Advanced Settings'), [
+                DateTime::make(__('Expiration'), 'expiration')
+                    ->displayUsing(fn ($value) => $value?->diffForHumans())
+                    ->rules('nullable', 'date'),
+
+                Text::make(__('Action'), 'action')
+                    ->rules('nullable', 'url', 'max:255')
+                    ->hideFromIndex(),
+
+                Select::make(__('Type'), 'type')
+                    ->options([
+                        NotificationType::MARKETING->value => __('Marketing'),
+                        NotificationType::TRANSACTIONAL->value => __('Transactional'),
+                        NotificationType::SYSTEM->value => __('System'),
+                        NotificationType::ALERT->value => __('Alert'),
+                        NotificationType::REMINDER->value => __('Reminder'),
+                    ])
+                    ->default(NotificationType::TRANSACTIONAL->value)
+                    ->rules('required', 'in:' . implode(',', array_column(NotificationType::cases(), 'value')))
+                    ->hideFromIndex(),
+            ])->collapsible()->collapsedByDefault(),
         ];
     }
 
@@ -126,31 +166,5 @@ class Notification extends Resource
         return [
             PublishNotification::make(),
         ];
-    }
-
-    /**
-     * Get the type field, rendered as hidden if the template defines it.
-     */
-    protected function typeField(): Hidden|Select
-    {
-        $templateHasType = isset(static::$template)
-            && static::$template->fields->contains('name', 'type');
-
-        if ($templateHasType) {
-            return Hidden::make(__('Type'), 'type')
-                ->default(static::$template->fields->firstWhere('name', 'type')->config['default'] ?? NotificationType::TRANSACTIONAL->value);
-        }
-
-        return Select::make(__('Type'), 'type')
-            ->options([
-                NotificationType::MARKETING->value => __('Marketing'),
-                NotificationType::TRANSACTIONAL->value => __('Transactional'),
-                NotificationType::SYSTEM->value => __('System'),
-                NotificationType::ALERT->value => __('Alert'),
-                NotificationType::REMINDER->value => __('Reminder'),
-            ])
-            ->default(NotificationType::TRANSACTIONAL->value)
-            ->rules('required', 'in:' . implode(',', array_column(NotificationType::cases(), 'value')))
-            ->hideFromIndex();
     }
 }

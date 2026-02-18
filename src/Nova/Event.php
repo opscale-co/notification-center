@@ -2,6 +2,7 @@
 
 namespace Opscale\NotificationCenter\Nova;
 
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\KeyValue;
@@ -61,6 +62,30 @@ class Event extends Resource
     public static function singularLabel(): string
     {
         return __('Event');
+    }
+
+    /**
+     * Determine if the current user can create new resources.
+     */
+    public static function authorizedToCreate(Request $request): bool
+    {
+        return false;
+    }
+
+    /**
+     * Determine if the current user can update the given resource.
+     */
+    public function authorizedToUpdate(Request $request): bool
+    {
+        return false;
+    }
+
+    /**
+     * Determine if the current user can delete the given resource.
+     */
+    public function authorizedToDelete(Request $request): bool
+    {
+        return false;
     }
 
     /**
