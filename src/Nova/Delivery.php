@@ -11,6 +11,7 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Resource;
 use Laravel\Nova\Tabs\Tab;
 use Opscale\NotificationCenter\Models\Delivery as DeliveryModel;
+use Opscale\NotificationCenter\Models\Enums\DeliveryStatus;
 use Opscale\NotificationCenter\Nova\Actions\ForceDelivery;
 
 /**
@@ -89,13 +90,13 @@ class Delivery extends Resource
 
                     Badge::make(__('Status'), 'status')
                         ->map([
-                            'Pending' => 'warning',
-                            'Failed' => 'danger',
-                            'Sent' => 'info',
-                            'Received' => 'info',
-                            'Opened' => 'info',
-                            'Verified' => 'success',
-                            'Expired' => 'danger',
+                            DeliveryStatus::PENDING->value => 'warning',
+                            DeliveryStatus::FAILED->value => 'danger',
+                            DeliveryStatus::SENT->value => 'info',
+                            DeliveryStatus::RECEIVED->value => 'info',
+                            DeliveryStatus::OPENED->value => 'info',
+                            DeliveryStatus::VERIFIED->value => 'success',
+                            DeliveryStatus::EXPIRED->value => 'danger',
                         ])
                         ->sortable(),
 

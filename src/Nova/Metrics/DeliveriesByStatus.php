@@ -7,6 +7,7 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Metrics\Partition;
 use Laravel\Nova\Metrics\PartitionResult;
 use Opscale\NotificationCenter\Models\Delivery;
+use Opscale\NotificationCenter\Models\Enums\DeliveryStatus;
 
 class DeliveriesByStatus extends Partition
 {
@@ -24,14 +25,15 @@ class DeliveriesByStatus extends Partition
             });
 
         return $this->count($request, $latestDeliveries, 'status')
+            ->label(fn ($value) => __($value))
             ->colors([
-                'Pending' => '#F59E0B',
-                'Failed' => '#EF4444',
-                'Sent' => '#3B82F6',
-                'Received' => '#6366F1',
-                'Opened' => '#8B5CF6',
-                'Verified' => '#10B981',
-                'Expired' => '#6B7280',
+                DeliveryStatus::PENDING->value => '#F59E0B',
+                DeliveryStatus::FAILED->value => '#EF4444',
+                DeliveryStatus::SENT->value => '#3B82F6',
+                DeliveryStatus::RECEIVED->value => '#6366F1',
+                DeliveryStatus::OPENED->value => '#8B5CF6',
+                DeliveryStatus::VERIFIED->value => '#10B981',
+                DeliveryStatus::EXPIRED->value => '#6B7280',
             ]);
     }
 
