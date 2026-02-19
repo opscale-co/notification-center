@@ -2,6 +2,12 @@
 
 All notable changes to opscale-co/nova-api will be documented in this file.
 
+## <small>1.1.5 (2026-02-18)</small>
+
+* Merge branch 'main' of https://github.com/opscale-co/notification-center ([7cb4832](https://github.com/opscale-co/notification-center/commit/7cb4832))
+* refactor(project): improvements in UX ([34a73f8](https://github.com/opscale-co/notification-center/commit/34a73f8))
+* chore(translations): added translations for enums ([1fb0123](https://github.com/opscale-co/notification-center/commit/1fb0123))
+
 ## <small>1.1.4 (2026-02-17)</small>
 
 * Merge branch 'main' of https://github.com/opscale-co/notification-center ([01af05b](https://github.com/opscale-co/notification-center/commit/01af05b))
