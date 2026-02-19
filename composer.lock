@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "da3bc53f36ccdb92443808fc81ac71eb",
+    "content-hash": "4562cdf12c512e7a1285fca998218332",
     "packages": [
         {
             "name": "brick/math",
@@ -3217,16 +3217,16 @@
         },
         {
             "name": "opscale-co/nova-dynamic-resources",
-            "version": "1.7.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opscale-co/nova-dynamic-resources.git",
-                "reference": "bf033da096d612e12208e3dd994d7a60e720e058"
+                "reference": "0c88abbc26540d5092eab6c3778f096d49779446"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opscale-co/nova-dynamic-resources/zipball/bf033da096d612e12208e3dd994d7a60e720e058",
-                "reference": "bf033da096d612e12208e3dd994d7a60e720e058",
+                "url": "https://api.github.com/repos/opscale-co/nova-dynamic-resources/zipball/0c88abbc26540d5092eab6c3778f096d49779446",
+                "reference": "0c88abbc26540d5092eab6c3778f096d49779446",
                 "shasum": ""
             },
             "require": {
@@ -3283,9 +3283,9 @@
             ],
             "support": {
                 "issues": "https://github.com/opscale-co/nova-dynamic-resources/issues",
-                "source": "https://github.com/opscale-co/nova-dynamic-resources/tree/v1.7.0"
+                "source": "https://github.com/opscale-co/nova-dynamic-resources/tree/v1.7.1"
             },
-            "time": "2026-02-18T14:02:49+00:00"
+            "time": "2026-02-19T03:32:42+00:00"
         },
         {
             "name": "opscale-co/nova-package-tools",

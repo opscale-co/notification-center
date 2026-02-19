@@ -89,6 +89,10 @@ class Notification extends Resource
                         ->map([
                             NotificationStatus::DRAFT->value => 'warning',
                             NotificationStatus::PUBLISHED->value => 'success',
+                        ])
+                        ->labels([
+                            NotificationStatus::DRAFT->value => __('Draft'),
+                            NotificationStatus::PUBLISHED->value => __('Published'),
                         ]),
                 ]),
 

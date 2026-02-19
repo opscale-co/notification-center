@@ -96,5 +96,8 @@
     "Successfully subscribed to push notifications!": "¡Suscrito exitosamente a las notificaciones push!",
     "Failed to register subscription. Please try again.": "Error al registrar la suscripción. Por favor, inténtalo de nuevo.",
     "An error occurred:": "Ocurrió un error:",
-    "More Details": "Más Detalles"
+    "More Details": "Más Detalles",
+    "Please open this page in your browser to enable push notifications.": "Por favor, abre esta página en tu navegador para habilitar las notificaciones push.",
+    "Notifications are blocked. Please enable them in your browser site settings and try again.": "Las notificaciones están bloqueadas. Por favor, habilítalas en la configuración del sitio en tu navegador e inténtalo de nuevo.",
+    "Notifications are blocked by your device. Please enable notifications for your browser in your device settings and try again.": "Las notificaciones están bloqueadas por tu dispositivo. Por favor, habilita las notificaciones para tu navegador en los ajustes del dispositivo e inténtalo de nuevo."
 }

@@ -96,5 +96,8 @@
     "Successfully subscribed to push notifications!": "Successfully subscribed to push notifications!",
     "Failed to register subscription. Please try again.": "Failed to register subscription. Please try again.",
     "An error occurred:": "An error occurred:",
-    "More Details": "More Details"
+    "More Details": "More Details",
+    "Please open this page in your browser to enable push notifications.": "Please open this page in your browser to enable push notifications.",
+    "Notifications are blocked. Please enable them in your browser site settings and try again.": "Notifications are blocked. Please enable them in your browser site settings and try again.",
+    "Notifications are blocked by your device. Please enable notifications for your browser in your device settings and try again.": "Notifications are blocked by your device. Please enable notifications for your browser in your device settings and try again."
 }

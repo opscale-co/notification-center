@@ -32,12 +32,12 @@ class WebPushController extends Controller
 
         $mailable = new SubscribeTemplate(
             registerUrl: route('notification-center.webpush.register', $profileId),
-            swUrl: route('notification-center.webpush.sw'),
             vapidPublicKey: config('webpush.vapid.public_key'),
         );
 
         return response($mailable->render())
-            ->header('Content-Type', 'text/html');
+            ->header('Content-Type', 'text/html; charset=UTF-8')
+            ->header('Permissions-Policy', 'notifications=(self)');
     }
 
     /**

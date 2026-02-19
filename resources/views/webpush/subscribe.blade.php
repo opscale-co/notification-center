@@ -16,21 +16,40 @@ document.addEventListener('DOMContentLoaded', function () {
     const statusEl = document.getElementById('status');
     const subscribeBtn = document.getElementById('subscribe-btn');
 
+    function isInAppBrowser() {
+        const ua = navigator.userAgent || '';
+        return /FBAN|FBAV|Instagram|WhatsApp|GSA\/|Line\/|wv\)|WebView/i.test(ua);
+    }
+
     async function subscribeToPush() {
         try {
+            if (isInAppBrowser()) {
+                statusEl.textContent = '{{ __("Please open this page in your browser to enable push notifications.") }}';
+                return;
+            }
+
             if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
                 statusEl.textContent = '{{ __("Push notifications are not supported in this browser.") }}';
                 return;
             }
 
-            await navigator.serviceWorker.register('{{ $swUrl }}');
-            const registration = await navigator.serviceWorker.ready;
+            const currentPermission = Notification.permission;
+
+            if (currentPermission === 'denied') {
+                statusEl.textContent = '{{ __("Notifications are blocked. Please enable them in your browser site settings and try again.") }}';
+                return;
+            }
 
             const permission = await Notification.requestPermission();
             if (permission !== 'granted') {
-                statusEl.textContent = '{{ __("Notification permission was denied.") }}';
+                statusEl.textContent = (currentPermission === 'default' && permission === 'denied')
+                    ? '{{ __("Notifications are blocked by your device. Please enable notifications for your browser in your device settings and try again.") }}'
+                    : '{{ __("Notification permission was denied.") }}';
                 return;
             }
+
+            await navigator.serviceWorker.register('/sw.js');
+            const registration = await navigator.serviceWorker.ready;
 
             navigator.serviceWorker.addEventListener('message', function (event) {
                 if (event.data.success) {

@@ -123,6 +123,15 @@ class Delivery extends Resource
                             DeliveryStatus::VERIFIED->value => 'success',
                             DeliveryStatus::EXPIRED->value => 'danger',
                         ])
+                        ->labels([
+                            DeliveryStatus::PENDING->value => __('Pending'),
+                            DeliveryStatus::FAILED->value => __('Failed'),
+                            DeliveryStatus::SENT->value => __('Sent'),
+                            DeliveryStatus::RECEIVED->value => __('Received'),
+                            DeliveryStatus::OPENED->value => __('Opened'),
+                            DeliveryStatus::VERIFIED->value => __('Verified'),
+                            DeliveryStatus::EXPIRED->value => __('Expired'),
+                        ])
                         ->sortable(),
 
                     DateTime::make(__('Created At'), 'created_at')
