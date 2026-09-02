@@ -14,14 +14,14 @@ use Opscale\NotificationCenter\Models\Profile as Model;
 use Opscale\NotificationCenter\Nova\Actions\CreateAudience;
 
 /**
- * @extends Resource<Model>
+ * @extends resource<Model>
  */
 class Profile extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\Opscale\NotificationCenter\Models\Profile>
+     * @var class-string<Model>
      */
     public static $model = Model::class;
 

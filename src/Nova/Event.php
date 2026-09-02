@@ -12,14 +12,14 @@ use Laravel\Nova\Resource;
 use Opscale\NotificationCenter\Models\Event as Model;
 
 /**
- * @extends Resource<Model>
+ * @extends resource<Model>
  */
 class Event extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\Opscale\NotificationCenter\Models\Event>
+     * @var class-string<Model>
      */
     public static $model = Model::class;
 

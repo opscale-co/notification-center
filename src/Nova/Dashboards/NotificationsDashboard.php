@@ -2,6 +2,7 @@
 
 namespace Opscale\NotificationCenter\Nova\Dashboards;
 
+use Laravel\Nova\Card;
 use Laravel\Nova\Dashboard;
 use Opscale\NotificationCenter\Models\Delivery;
 use Opscale\NotificationCenter\Models\Enums\DeliveryStatus;
@@ -22,7 +23,7 @@ class NotificationsDashboard extends Dashboard
     /**
      * Get the cards that should be displayed on the Nova dashboard.
      *
-     * @return array<\Laravel\Nova\Card>
+     * @return array<Card>
      */
     public function cards(): array
     {

@@ -2,7 +2,6 @@
 
 namespace Opscale\NotificationCenter\Models;
 
-use Enigma\ValidatorTrait;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -11,11 +10,12 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use NotificationChannels\WebPush\HasPushSubscriptions;
+use Opscale\Validations\Validatable;
 use Spatie\Tags\HasTags;
 
 class Profile extends Model
 {
-    use HasPushSubscriptions, HasTags, HasUlids, Notifiable, SoftDeletes, ValidatorTrait;
+    use HasPushSubscriptions, HasTags, HasUlids, Notifiable, SoftDeletes, Validatable;
 
     protected $table = 'notification_center_profiles';
 
@@ -35,6 +35,24 @@ class Profile extends Model
         'notifiable_type',
         'notifiable_id',
     ];
+
+    protected static function booted(): void
+    {
+        static::validateOnSaving();
+    }
+
+    /**
+     * The validation rules for this model.
+     *
+     * @return array<string, mixed>
+     */
+    public function validationRules(): array
+    {
+        return [
+            'notifiable_type' => ['required', 'string', 'max:255'],
+            'notifiable_id' => ['required'],
+        ];
+    }
 
     /**
      * Get the notifiable entity.

@@ -3,6 +3,7 @@
 namespace Opscale\NotificationCenter\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\Badge;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
@@ -16,14 +17,14 @@ use Opscale\NotificationCenter\Models\Enums\DeliveryStatus;
 use Opscale\NotificationCenter\Nova\Actions\ForceDelivery;
 
 /**
- * @extends Resource<DeliveryModel>
+ * @extends resource<DeliveryModel>
  */
 class Delivery extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\Opscale\NotificationCenter\Models\Delivery>
+     * @var class-string<DeliveryModel>
      */
     public static $model = DeliveryModel::class;
 
@@ -154,7 +155,7 @@ class Delivery extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @return array<\Laravel\Nova\Actions\Action>
+     * @return array<Action>
      */
     public function actions(NovaRequest $request): array
     {

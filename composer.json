@@ -24,17 +24,17 @@
     }
   ],
   "require": {
-    "php": "^8.2",
+    "php": "^8.3",
     "jenssegers/agent": "^2.6",
-    "laravel-notification-channels/microsoft-teams": "^2.1",
-    "laravel-notification-channels/twilio": "^4.1",
-    "laravel-notification-channels/webpush": "^10.4",
-    "laravel/slack-notification-channel": "^3.7",
-    "opscale-co/actions": "^1.0",
-    "opscale-co/nova-dynamic-resources": "^1.1",
-    "opscale-co/nova-package-tools": "^1.0",
-    "spatie/laravel-tags": "^4.10",
-    "theriddleofenigma/laravel-model-validation": "^1.6"
+    "laravel-notification-channels/microsoft-teams": "^2.2",
+    "laravel-notification-channels/twilio": "^4.2",
+    "laravel-notification-channels/webpush": "^12.0",
+    "laravel/slack-notification-channel": "^3.10",
+    "opscale-co/actions": "^3.0",
+    "opscale-co/nova-dynamic-resources": "^1.11",
+    "opscale-co/nova-package-tools": "^1.1",
+    "opscale-co/validations": "^1.0",
+    "spatie/laravel-tags": "^4.12"
   },
   "autoload": {
     "psr-4": {
@@ -62,10 +62,11 @@
   "minimum-stability": "stable",
   "prefer-stable": true,
   "require-dev": {
-    "laravel/nova": "^5.4",
-    "laravel/nova-devtool": "^1.0",
-    "phpunit/phpunit": "^10.5",
-    "tightenco/duster": "^2.7"
+    "laravel/nova": "^5.7",
+    "laravel/nova-devtool": "^1.10",
+    "mockery/mockery": "^1.6",
+    "phpunit/phpunit": "^12.0",
+    "tightenco/duster": "^3.4"
   },
   "scripts": {
     "post-autoload-dump": [

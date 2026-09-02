@@ -26,7 +26,7 @@ class ProfileAudienceSeeder extends Seeder
         Subscription::create([
             'profile_id' => $profile->id,
             'type' => 'nova',
-            'contact' => $admin->id,
+            'contact' => (string) $admin->id,
             'verified' => true,
             'priority' => 1,
         ]);

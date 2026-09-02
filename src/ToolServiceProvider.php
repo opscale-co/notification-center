@@ -47,6 +47,8 @@ class ToolServiceProvider extends NovaPackageServiceProvider
             ])
             ->hasTranslations()
             ->hasRoute('web')
+            ->hasNovaApiRoute(__DIR__ . '/../routes/api.php', 'opscale-co/notification-center')
+            ->hasNovaPageRoute(__DIR__ . '/../routes/inertia.php', 'notification-center')
             ->hasInstallCommand(function (InstallCommand $installCommand): void {
                 $installCommand
                     ->publishConfigFile()

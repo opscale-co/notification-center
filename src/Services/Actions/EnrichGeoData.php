@@ -35,6 +35,36 @@ class EnrichGeoData extends Action
         ];
     }
 
+    public function outputs(): array
+    {
+        return [
+            [
+                'name' => 'success',
+                'description' => 'Whether the event was enriched successfully',
+                'type' => 'boolean',
+                'rules' => ['required', 'boolean'],
+            ],
+            [
+                'name' => 'message',
+                'description' => 'Reason the enrichment did not succeed, when applicable',
+                'type' => 'string',
+                'rules' => ['nullable', 'string'],
+            ],
+            [
+                'name' => 'event_id',
+                'description' => 'The event that was enriched',
+                'type' => 'string',
+                'rules' => ['nullable'],
+            ],
+            [
+                'name' => 'geo',
+                'description' => 'The resolved geolocation data',
+                'type' => 'array',
+                'rules' => ['nullable', 'array'],
+            ],
+        ];
+    }
+
     public function handle(array $attributes = []): array
     {
         $event = Event::findOrFail($attributes['event_id']);

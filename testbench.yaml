@@ -16,11 +16,14 @@ workbench:
     - package:discover
     - asset-publish
     - create-sqlite-db
-    - vendor:publish --provider="NotificationChannels\WebPush\WebPushServiceProvider" --tag="migrations"
+    - vendor:publish:
+        '--provider': 'NotificationChannels\WebPush\WebPushServiceProvider'
+        '--tag': 'migrations'
     - db:wipe
     - migrate:refresh
     - webpush:vapid
-    - notification-center:install --no-interaction
+    - notification-center:install:
+        '--no-interaction': true
   assets:
     - nova-assets
   sync: []

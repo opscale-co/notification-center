@@ -57,6 +57,30 @@ class TrackEvent extends Action
         ];
     }
 
+    public function outputs(): array
+    {
+        return [
+            [
+                'name' => 'success',
+                'description' => 'Whether the event was tracked successfully',
+                'type' => 'boolean',
+                'rules' => ['required', 'boolean'],
+            ],
+            [
+                'name' => 'delivery_id',
+                'description' => 'The delivery the event was tracked for',
+                'type' => 'string',
+                'rules' => ['nullable'],
+            ],
+            [
+                'name' => 'event',
+                'description' => 'The event type that was tracked',
+                'type' => 'string',
+                'rules' => ['nullable', 'string'],
+            ],
+        ];
+    }
+
     public function handle(array $attributes = []): array
     {
         $this->delivery = Delivery::findOrFail($attributes['delivery_id']);

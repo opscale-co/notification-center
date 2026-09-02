@@ -15,14 +15,14 @@ use Opscale\NotificationCenter\Models\Audience as Model;
 use Opscale\NotificationCenter\Models\Enums\AudienceType;
 
 /**
- * @extends Resource<Model>
+ * @extends resource<Model>
  */
 class Audience extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\Opscale\NotificationCenter\Models\Audience>
+     * @var class-string<Model>
      */
     public static $model = Model::class;
 

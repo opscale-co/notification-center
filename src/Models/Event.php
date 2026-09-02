@@ -2,14 +2,14 @@
 
 namespace Opscale\NotificationCenter\Models;
 
-use Enigma\ValidatorTrait;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Opscale\Validations\Validatable;
 
 class Event extends Model
 {
-    use HasUlids, ValidatorTrait;
+    use HasUlids, Validatable;
 
     protected $table = 'notification_center_events';
 
@@ -32,6 +32,25 @@ class Event extends Model
     protected $casts = [
         'payload' => 'array',
     ];
+
+    protected static function booted(): void
+    {
+        static::validateOnSaving();
+    }
+
+    /**
+     * The validation rules for this model.
+     *
+     * @return array<string, mixed>
+     */
+    public function validationRules(): array
+    {
+        return [
+            'delivery_id' => ['required', 'ulid'],
+            'name' => ['required', 'string', 'max:255'],
+            'payload' => ['nullable', 'json'],
+        ];
+    }
 
     /**
      * Get the delivery that owns the event.

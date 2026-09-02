@@ -12,14 +12,14 @@ use Laravel\Nova\Resource;
 use Opscale\NotificationCenter\Models\Subscription as Model;
 
 /**
- * @extends Resource<Model>
+ * @extends resource<Model>
  */
 class Subscription extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\Opscale\NotificationCenter\Models\Subscription>
+     * @var class-string<Model>
      */
     public static $model = Model::class;
 

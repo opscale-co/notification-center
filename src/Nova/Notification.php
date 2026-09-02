@@ -3,6 +3,7 @@
 namespace Opscale\NotificationCenter\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Card;
 use Laravel\Nova\Fields\Badge;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
@@ -24,7 +25,7 @@ use Opscale\NotificationCenter\Nova\Metrics\TotalTargets;
 use Opscale\NovaDynamicResources\Nova\Concerns\UsesTemplate;
 
 /**
- * @extends Resource<Model>
+ * @extends resource<Model>
  */
 class Notification extends Resource
 {
@@ -33,7 +34,7 @@ class Notification extends Resource
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\Opscale\NotificationCenter\Models\Notification>
+     * @var class-string<Model>
      */
     public static $model = Model::class;
 
@@ -151,7 +152,7 @@ class Notification extends Resource
     /**
      * Get the cards available for the resource.
      *
-     * @return array<\Laravel\Nova\Card>
+     * @return array<Card>
      */
     public function cards(NovaRequest $request): array
     {

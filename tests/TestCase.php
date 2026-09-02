@@ -8,11 +8,16 @@ use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
         Route::middlewareGroup('nova', []);
+    }
+
+    protected function defineEnvironment($app)
+    {
+        $app['config']->set('database.default', 'testing');
     }
 
     protected function getPackageProviders($app)

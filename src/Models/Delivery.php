@@ -2,17 +2,18 @@
 
 namespace Opscale\NotificationCenter\Models;
 
-use Enigma\ValidatorTrait;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Validation\Rule;
 use Opscale\NotificationCenter\Models\Enums\DeliveryStatus;
 use Opscale\NotificationCenter\Models\Repositories\DeliveryRepository;
+use Opscale\Validations\Validatable;
 
 class Delivery extends Pivot
 {
-    use DeliveryRepository, HasUlids, ValidatorTrait;
+    use DeliveryRepository, HasUlids, Validatable;
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -45,6 +46,28 @@ class Delivery extends Pivot
     protected $casts = [
         'status' => DeliveryStatus::class,
     ];
+
+    protected static function booted(): void
+    {
+        static::validateOnSaving();
+    }
+
+    /**
+     * The validation rules for this model.
+     *
+     * @return array<string, mixed>
+     */
+    public function validationRules(): array
+    {
+        return [
+            'profile_id' => ['required', 'ulid'],
+            'notification_id' => ['required', 'ulid'],
+            'channel' => ['required', 'string', 'max:255'],
+            'status' => ['nullable', Rule::enum(DeliveryStatus::class)],
+            'open_slug' => ['nullable', 'string', 'max:255'],
+            'action_slug' => ['nullable', 'string', 'max:255'],
+        ];
+    }
 
     /**
      * Get the profile that owns the delivery.

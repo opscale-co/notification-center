@@ -5,6 +5,7 @@
 declare(strict_types=1);
 
 use Rector\Caching\ValueObject\Storage\FileCacheStorage;
+use Rector\CodeQuality\Rector\If_\SimplifyIfReturnBoolRector;
 use Rector\Config\RectorConfig;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\SetList;
@@ -45,7 +46,7 @@ function phpSetup(): array
             __DIR__ . '/tests/fixtures',
 
             // Specific rules
-            Rector\CodeQuality\Rector\If_\SimplifyIfReturnBoolRector::class,
+            SimplifyIfReturnBoolRector::class,
         ],
     ];
 }
@@ -84,7 +85,7 @@ function laravelSetup(): array
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->cacheDirectory('/tmp/rector-cache');
     $rectorConfig->cacheClass(FileCacheStorage::class);
-    $rectorConfig->phpVersion(PhpVersion::PHP_82);
+    $rectorConfig->phpVersion(PhpVersion::PHP_83);
 
     // Get configuration for Laravel projects
     $config = laravelSetup();
