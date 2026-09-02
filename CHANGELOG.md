@@ -2,6 +2,10 @@
 
 All notable changes to opscale-co/nova-api will be documented in this file.
 
+## 1.2.0 (2026-09-02)
+
+* feat(notifications): add single-profile delivery and notification blueprints ([27debc6](https://github.com/opscale-co/notification-center/commit/27debc6))
+
 ## <small>1.1.7 (2026-09-02)</small>
 
 * fix(deps): update all dependencies to latest and adapt to opscale actions v3 ([9cf7646](https://github.com/opscale-co/notification-center/commit/9cf7646))
