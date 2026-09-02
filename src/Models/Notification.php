@@ -4,6 +4,7 @@ namespace Opscale\NotificationCenter\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -33,6 +34,7 @@ class Notification extends Model
         'status',
         'type',
         'template_id',
+        'blueprint_id',
         'data',
     ];
 
@@ -69,8 +71,17 @@ class Notification extends Model
             'status' => ['nullable', Rule::enum(NotificationStatus::class)],
             'type' => ['nullable', Rule::enum(NotificationType::class)],
             'template_id' => ['nullable', 'ulid'],
+            'blueprint_id' => ['nullable', 'ulid'],
             'data' => ['nullable', 'json'],
         ];
+    }
+
+    /**
+     * Get the blueprint this notification was generated from, if any.
+     */
+    public function blueprint(): BelongsTo
+    {
+        return $this->belongsTo(Blueprint::class);
     }
 
     /**

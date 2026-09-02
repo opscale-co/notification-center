@@ -10,6 +10,7 @@ use Opscale\NotificationCenter\Jobs\ExecuteNotificationStrategy;
 use Opscale\NotificationCenter\Models\Enums\NotificationStatus;
 use Opscale\NotificationCenter\Models\Notification as NotificationModel;
 use Opscale\NotificationCenter\Nova\Audience;
+use Opscale\NotificationCenter\Nova\Blueprint;
 use Opscale\NotificationCenter\Nova\Delivery;
 use Opscale\NotificationCenter\Nova\Event;
 use Opscale\NotificationCenter\Nova\Notification;
@@ -40,6 +41,7 @@ class ToolServiceProvider extends NovaPackageServiceProvider
                 Audience::class,
                 Delivery::class,
                 Event::class,
+                Blueprint::class,
                 Notification::class,
                 Profile::class,
                 Subscription::class,

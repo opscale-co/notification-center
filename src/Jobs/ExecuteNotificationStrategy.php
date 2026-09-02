@@ -12,6 +12,7 @@ use Illuminate\Queue\SerializesModels;
 use Opscale\NotificationCenter\Models\Delivery;
 use Opscale\NotificationCenter\Models\Enums\DeliveryStatus;
 use Opscale\NotificationCenter\Models\Notification;
+use Opscale\NotificationCenter\Models\Profile;
 
 class ExecuteNotificationStrategy implements ShouldQueue
 {
@@ -30,6 +31,7 @@ class ExecuteNotificationStrategy implements ShouldQueue
      */
     public function __construct(
         protected Notification $notification,
+        protected ?Profile $profile = null,
     ) {
         $type = strtolower($this->notification->type->value);
         $queue = config("notification-center.strategies.{$type}.queue", 'notifications');
@@ -49,6 +51,16 @@ class ExecuteNotificationStrategy implements ShouldQueue
         $this->messages = config('notification-center.messages', []);
 
         if (empty($this->channels)) {
+            return;
+        }
+
+        if ($this->profile) {
+            $this->profile->load(['deliveries' => function ($query) {
+                $query->where('notification_id', $this->notification->id)->orderBy('created_at');
+            }]);
+
+            $this->processProfile($this->profile);
+
             return;
         }
 

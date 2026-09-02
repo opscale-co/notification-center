@@ -19,6 +19,7 @@ use Opscale\NotificationCenter\Models\Enums\NotificationStatus;
 use Opscale\NotificationCenter\Models\Enums\NotificationType;
 use Opscale\NotificationCenter\Models\Notification as Model;
 use Opscale\NotificationCenter\Nova\Actions\PublishNotification;
+use Opscale\NotificationCenter\Nova\Actions\SendToProfile;
 use Opscale\NotificationCenter\Nova\Metrics\DeliveriesByStatus;
 use Opscale\NotificationCenter\Nova\Metrics\DeliveriesPerDay;
 use Opscale\NotificationCenter\Nova\Metrics\TotalTargets;
@@ -170,6 +171,7 @@ class Notification extends Resource
     {
         return [
             PublishNotification::make(),
+            SendToProfile::make(),
         ];
     }
 }

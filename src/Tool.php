@@ -9,6 +9,7 @@ use Laravel\Nova\Menu\MenuSection;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool as NovaTool;
 use Opscale\NotificationCenter\Nova\Audience;
+use Opscale\NotificationCenter\Nova\Blueprint;
 use Opscale\NotificationCenter\Nova\Notification;
 use Opscale\NotificationCenter\Nova\Profile;
 use Opscale\NotificationCenter\Nova\Template;
@@ -35,6 +36,7 @@ class Tool extends NovaTool
             MenuGroup::make(__('Notifications'), [
                 ...$notificationItems,
                 MenuItem::resource(Notification::class),
+                MenuItem::resource(Blueprint::class),
                 MenuItem::resource(Template::class),
             ]),
             MenuGroup::make(__('Audience'), [

@@ -26,5 +26,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(AlertTemplateSeeder::class);
         $this->call(ProfileAudienceSeeder::class);
+        $this->call(BlueprintSeeder::class);
     }
 }
