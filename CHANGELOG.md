@@ -2,6 +2,10 @@
 
 All notable changes to opscale-co/nova-api will be documented in this file.
 
+## <small>1.1.7 (2026-09-02)</small>
+
+* fix(deps): update all dependencies to latest and adapt to opscale actions v3 ([9cf7646](https://github.com/opscale-co/notification-center/commit/9cf7646))
+
 ## <small>1.1.6 (2026-02-19)</small>
 
 * Merge branch 'main' of https://github.com/opscale-co/notification-center ([9adbbdb](https://github.com/opscale-co/notification-center/commit/9adbbdb))
