@@ -5,6 +5,7 @@ namespace Opscale\NotificationCenter\Services\Actions;
 use Illuminate\Notifications\Events\NotificationFailed;
 use Illuminate\Notifications\Events\NotificationSent;
 use Illuminate\Support\Facades\Log as Logger;
+use Illuminate\Validation\Rule;
 use Opscale\Actions\Action;
 use Opscale\NotificationCenter\Models\Delivery;
 use Opscale\NotificationCenter\Models\Enums\DeliveryStatus;
@@ -40,7 +41,7 @@ class TrackEvent extends Action
                 'name' => 'delivery_id',
                 'description' => 'The delivery ID to track the event for',
                 'type' => 'string',
-                'rules' => ['required', 'string', 'exists:deliveries,id'],
+                'rules' => ['required', 'string', Rule::exists((new Delivery)->getTable(), 'id')],
             ],
             [
                 'name' => 'event',
