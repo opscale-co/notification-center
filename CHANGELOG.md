@@ -2,6 +2,10 @@
 
 All notable changes to opscale-co/nova-api will be documented in this file.
 
+## <small>1.2.1 (2026-09-10)</small>
+
+* fix(actions): validate delivery_id against correct deliveries table ([7f0cf76](https://github.com/opscale-co/notification-center/commit/7f0cf76))
+
 ## 1.2.0 (2026-09-02)
 
 * feat(notifications): add single-profile delivery and notification blueprints ([27debc6](https://github.com/opscale-co/notification-center/commit/27debc6))
