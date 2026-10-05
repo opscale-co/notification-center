@@ -215,11 +215,21 @@ class TrackEvent extends Action
 
     /**
      * Handle as event listener.
+     *
+     * @param  mixed  ...$arguments  The dispatched event payload; the first
+     *                               argument is expected to be a
+     *                               NotificationSent or NotificationFailed event.
      */
-    public function asListener(NotificationSent|NotificationFailed $event): void
+    public function asListener(mixed ...$arguments): mixed
     {
+        $event = $arguments[0] ?? null;
+
+        if (! $event instanceof NotificationSent && ! $event instanceof NotificationFailed) {
+            return null;
+        }
+
         if (! $event->notification instanceof Notification) {
-            return;
+            return null;
         }
 
         $this->delivery = $event->notification->getDelivery();
@@ -228,6 +238,8 @@ class TrackEvent extends Action
             $event instanceof NotificationSent => $this->sent(),
             $event instanceof NotificationFailed => $this->handleFailed($event),
         };
+
+        return $this;
     }
 
     /**
