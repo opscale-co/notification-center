@@ -2,6 +2,10 @@
 
 All notable changes to opscale-co/nova-api will be documented in this file.
 
+## <small>1.2.2 (2026-10-05)</small>
+
+* fix(deps): update opscale-co/actions to v4 and bump nova-dynamic-resources ([b4db170](https://github.com/opscale-co/notification-center/commit/b4db170))
+
 ## <small>1.2.1 (2026-09-10)</small>
 
 * fix(actions): validate delivery_id against correct deliveries table ([7f0cf76](https://github.com/opscale-co/notification-center/commit/7f0cf76))

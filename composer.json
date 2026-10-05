@@ -84,5 +84,5 @@
       "@php vendor/bin/testbench serve --ansi"
     ]
   },
-  "version": "1.2.1"
+  "version": "1.2.2"
 }
