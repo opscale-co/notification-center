@@ -2,6 +2,10 @@
 
 All notable changes to opscale-co/nova-api will be documented in this file.
 
+## <small>1.2.3 (2026-10-05)</small>
+
+* fix(actions): make TrackEvent asListener signature compatible with parent ([f01c120](https://github.com/opscale-co/notification-center/commit/f01c120))
+
 ## <small>1.2.2 (2026-10-05)</small>
 
 * fix(deps): update opscale-co/actions to v4 and bump nova-dynamic-resources ([b4db170](https://github.com/opscale-co/notification-center/commit/b4db170))
