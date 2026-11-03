@@ -2,6 +2,10 @@
 
 All notable changes to opscale-co/nova-api will be documented in this file.
 
+## 1.3.0 (2026-11-03)
+
+* feat(actions): convert Nova actions to multi-surface Opscale actions ([08e3f13](https://github.com/opscale-co/notification-center/commit/08e3f13))
+
 ## <small>1.2.3 (2026-10-05)</small>
 
 * fix(actions): make TrackEvent asListener signature compatible with parent ([f01c120](https://github.com/opscale-co/notification-center/commit/f01c120))
