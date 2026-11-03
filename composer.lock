@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "184dfe5f7f8f0a8208f5cfb8d07798e8",
+    "content-hash": "ff10b870c74c44400bd3931e1d054f2d",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -4297,16 +4297,16 @@
         },
         {
             "name": "opscale-co/nova-dynamic-resources",
-            "version": "1.11.7",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opscale-co/nova-dynamic-resources.git",
-                "reference": "0eff29a4751e8fabcd51bbe2ebebdc7682d32814"
+                "reference": "251a794170e446f46fd9b2ca140156e92912aafd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opscale-co/nova-dynamic-resources/zipball/0eff29a4751e8fabcd51bbe2ebebdc7682d32814",
-                "reference": "0eff29a4751e8fabcd51bbe2ebebdc7682d32814",
+                "url": "https://api.github.com/repos/opscale-co/nova-dynamic-resources/zipball/251a794170e446f46fd9b2ca140156e92912aafd",
+                "reference": "251a794170e446f46fd9b2ca140156e92912aafd",
                 "shasum": ""
             },
             "require": {
@@ -4370,9 +4370,9 @@
             ],
             "support": {
                 "issues": "https://github.com/opscale-co/nova-dynamic-resources/issues",
-                "source": "https://github.com/opscale-co/nova-dynamic-resources/tree/v1.11.7"
+                "source": "https://github.com/opscale-co/nova-dynamic-resources/tree/v1.12.0"
             },
-            "time": "2026-10-05T22:00:37+00:00"
+            "time": "2026-10-05T23:17:26+00:00"
         },
         {
             "name": "opscale-co/nova-geospatial-fields",

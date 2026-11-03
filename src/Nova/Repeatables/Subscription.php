@@ -8,9 +8,17 @@ use Laravel\Nova\Fields\Repeater\Repeatable;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Opscale\NotificationCenter\Models\Subscription as Model;
 
-class Channel extends Repeatable
+class Subscription extends Repeatable
 {
+    /**
+     * The underlying model the repeatable represents.
+     *
+     * @var class-string<Model>
+     */
+    public static $model = Model::class;
+
     /**
      * Get the fields displayed by the repeatable.
      *
@@ -20,13 +28,8 @@ class Channel extends Repeatable
     {
         return [
             Select::make(__('Type'), 'type')
-                ->options([
-                    'email' => __('Email'),
-                    'sms' => __('SMS'),
-                    'push' => __('Push Notification'),
-                    'slack' => __('Slack'),
-                    'webhook' => __('Webhook'),
-                ])
+                ->options($this->getChannelTypes())
+                ->displayUsingLabels()
                 ->rules('required', 'string'),
 
             Text::make(__('Contact'), 'contact')
@@ -43,5 +46,19 @@ class Channel extends Repeatable
                 ->rules('required', 'integer', 'min:1', 'max:10')
                 ->help(__('Priority from 1 (highest) to 10 (lowest)')),
         ];
+    }
+
+    /**
+     * Get available channel types from config.
+     *
+     * @return array<string, string>
+     */
+    protected function getChannelTypes(): array
+    {
+        $messages = config('notification-center.messages', []);
+
+        return collect(array_keys($messages))
+            ->mapWithKeys(fn ($key) => [$key => __(ucfirst($key))])
+            ->all();
     }
 }

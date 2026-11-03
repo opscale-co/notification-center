@@ -4,14 +4,15 @@ namespace Opscale\NotificationCenter\Nova;
 
 use Illuminate\Notifications\Notifiable;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\MorphTo;
+use Laravel\Nova\Fields\Repeater;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Resource;
 use Laravel\Nova\Tabs\Tab;
 use Opscale\NotificationCenter\Models\Profile as Model;
-use Opscale\NotificationCenter\Nova\Actions\CreateAudience;
+use Opscale\NotificationCenter\Nova\Repeatables\Subscription as SubscriptionRepeatable;
+use Opscale\NotificationCenter\Services\Actions\CreateAudience;
 
 /**
  * @extends resource<Model>
@@ -90,11 +91,14 @@ class Profile extends Resource
                         ->displayUsing(fn ($value) => $value?->diffForHumans())
                         ->exceptOnForms(),
                 ]),
-
-                Tab::make(__('Subscriptions'), [
-                    HasMany::make(__('Subscriptions'), 'subscriptions', Subscription::class),
-                ]),
             ]),
+
+            Repeater::make(__('Subscriptions'), 'subscriptions')
+                ->repeatables([
+                    SubscriptionRepeatable::make(),
+                ])
+                ->asHasMany(Subscription::class)
+                ->showOnDetail(),
         ];
     }
 

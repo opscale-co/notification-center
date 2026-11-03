@@ -14,7 +14,7 @@ use Laravel\Nova\Resource;
 use Laravel\Nova\Tabs\Tab;
 use Opscale\NotificationCenter\Models\Delivery as DeliveryModel;
 use Opscale\NotificationCenter\Models\Enums\DeliveryStatus;
-use Opscale\NotificationCenter\Nova\Actions\ForceDelivery;
+use Opscale\NotificationCenter\Services\Actions\ForceDelivery;
 
 /**
  * @extends resource<DeliveryModel>

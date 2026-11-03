@@ -8,7 +8,7 @@ use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Resource;
 use Opscale\NotificationCenter\Models\Blueprint as Model;
-use Opscale\NotificationCenter\Nova\Actions\SendBlueprintToProfile;
+use Opscale\NotificationCenter\Services\Actions\SendBlueprintToProfile;
 
 /**
  * @extends resource<Model>
