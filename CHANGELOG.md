@@ -2,6 +2,17 @@
 
 All notable changes to opscale-co/nova-api will be documented in this file.
 
+## 2.0.0 (2026-11-07)
+
+* feat(laravel): require Laravel 13, drop Laravel 11/12 ([d038568](https://github.com/opscale-co/notification-center/commit/d038568))
+
+
+### BREAKING CHANGE
+
+* requires the Laravel 13 toolchain; drops Laravel 11/12.
+
+Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>
+
 ## 1.3.0 (2026-11-03)
 
 * feat(actions): convert Nova actions to multi-surface Opscale actions ([08e3f13](https://github.com/opscale-co/notification-center/commit/08e3f13))
