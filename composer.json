@@ -30,10 +30,10 @@
     "laravel-notification-channels/twilio": "^4.2",
     "laravel-notification-channels/webpush": "^12.0",
     "laravel/slack-notification-channel": "^3.10",
-    "opscale-co/actions": "^4.1",
-    "opscale-co/nova-dynamic-resources": "^1.12",
-    "opscale-co/nova-package-tools": "^1.1",
-    "opscale-co/validations": "^1.0",
+    "opscale-co/actions": "^5.0",
+    "opscale-co/nova-dynamic-resources": "^2.0",
+    "opscale-co/nova-package-tools": "^2.0",
+    "opscale-co/validations": "^2.0",
     "spatie/laravel-tags": "^4.12"
   },
   "autoload": {
@@ -65,7 +65,7 @@
   "minimum-stability": "stable",
   "prefer-stable": true,
   "require-dev": {
-    "laravel/nova": "^5.7",
+    "laravel/nova": "^5.10",
     "laravel/nova-devtool": "^1.10",
     "mockery/mockery": "^1.6",
     "phpunit/phpunit": "^12.0",
